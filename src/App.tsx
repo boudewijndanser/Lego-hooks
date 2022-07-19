@@ -1,24 +1,23 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-import { User } from './types';
+import './App.css'
+import '@fontsource/roboto/300.css'
+import '@fontsource/roboto/400.css'
+import '@fontsource/roboto/500.css'
+import '@fontsource/roboto/700.css'
+import { UserProvider } from './context/userContext'
+import ResponsiveAppBar from './components/mainNav'
 
 
 function App() {
-  
-  const [user, setUser] = useState<User>({kind: 'loggedOut'})
 
   return (
     <div className="App">
       <header className="App-header">
-
+      <UserProvider>
+        <ResponsiveAppBar/>
+      </UserProvider>
       </header>
     </div>
   );
 }
 
-export default App;
+export default App
