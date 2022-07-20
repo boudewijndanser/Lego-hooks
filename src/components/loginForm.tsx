@@ -6,26 +6,39 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+
 import { Form } from '../types';
+import { useUserContext } from '../context/useUserContext';
 
 export default function FormDialog() {
   const [open, setOpen] = React.useState(false);
   const [form, setForm] = React.useState<Form>({
-    username: '',
-    password: '',
-    apiKey: ''
-  });
-
+      username: '',
+      password: '',
+      apiKey: ''
+    });
+  const { user, setUser } = useUserContext();
+  
   const onUpdateField = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    console.log('onUpdateField: ', event)
+
     const nextFormState = {
       ...form,
       [event.target.name]: event.target.value,
-    };
-    setForm(nextFormState);
-    console.log('-> form: ', form)
+    }
+
+    setForm(nextFormState)
   }
 
+  const handleSubmit = () => {
+
+    setUser({
+        kind: 'loggedOut',
+        username: form.username,
+        apiKey: form.apiKey,
+        password: form.password
+    })
+    setOpen(false)
+  }
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -84,7 +97,12 @@ export default function FormDialog() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose} variant="contained" color="success">Login</Button>
+          <Button 
+            onClick={handleSubmit}
+            variant="contained" 
+            color="success"
+            >Login
+            </Button>
         </DialogActions>
       </Dialog>
     </div>
