@@ -7,3 +7,9 @@ export type User = {
 } | {
     kind: 'loggedOut'
     }
+
+export type Form = {
+    username: string
+    password: string
+    apiKey: string
+}
