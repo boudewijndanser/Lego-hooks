@@ -30,3 +30,11 @@ export type ThemeApiResponse =  {
     "matches": number
     "themes": Theme[]
 }
+
+export type UserLoginResponse = {
+    status: 'success'
+    hash: string
+} | {
+    status: 'error'
+    Message: 'string'
+}
