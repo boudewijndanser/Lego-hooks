@@ -41,13 +41,13 @@ export type UserLoginResponse = {
 
 export type Set = {
       setID: number
-      number: number
+      number: string
       numberVariant: number
       name: string
       year: number
       theme: string // Type this properly
       themeGroup: string // This too
-      subtheme: string // and this
+      subtheme?: string // and this
       category?: string
       released: true
       pieces: number
@@ -66,8 +66,8 @@ export type Set = {
       ageRange: AgeRange
       dimensions: Dimensions
       barcode: Barcode
-      extendedData?: string
-      lastUpdated: Date
+      extendedData?: {}
+      lastUpdated: string
 
 }
 
@@ -80,7 +80,7 @@ export type Collection = {
     owned: boolean
     wanted: boolean
     qtyOwned: number
-    rating: string
+    rating: number
     notes: string
 }
 
@@ -98,21 +98,21 @@ export type LEGOCom = {
 
 
 export type Details = {
-    retailPrice?: string
-    dateFirstAvailable?: Date
-    dateLastAvailable?: Date
+    retailPrice?: number
+    dateFirstAvailable?: string
+    dateLastAvailable?: string
 }
 
 export type AgeRange = {
-    min: number
-    max: number
+    min?: number
+    max?: number
 }
 
 export type Dimensions = {
-    height: number
-    width: number
-    depth: number
-    weight: number
+    height?: number
+    width?: number
+    depth?: number
+    weight?: number
 }
 
 export type Barcode = {
