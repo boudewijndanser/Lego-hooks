@@ -6,6 +6,7 @@ import '@fontsource/roboto/700.css'
 import { UserProvider } from './context/userContext'
 import ResponsiveAppBar from './components/mainNav'
 import FormDialog from './components/loginForm'
+import { SetsOverview } from './components/setsOverview'
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     <div className="App">
       <header className="App-header">
       <UserProvider>
+        <SetsOverview />
         <FormDialog />
         <ResponsiveAppBar/>
       </UserProvider>
