@@ -22,7 +22,7 @@ const ResponsiveAppBar = () => {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   const { user } = useUserContext()
   
-    console.log('--> nav: user = ', user)
+    //console.log('--> nav: user = ', user)
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
