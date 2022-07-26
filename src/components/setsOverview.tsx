@@ -2,8 +2,11 @@ import { tmpData } from '../tmpData'
 import { OverviewCard } from './overviewCard'
 import ImageList from '@mui/material/ImageList'
 import Box from '@mui/material/Box'
+import { countElementsInArray, getYearsFromSets } from './setsOverviewUtils'
 
 export const SetsOverview = ():JSX.Element => {
+    let counted: string[] = countElementsInArray(getYearsFromSets(tmpData))
+    console.log(counted.filter((x, i, a) => a.indexOf(x) == i))
 
     return (
 
