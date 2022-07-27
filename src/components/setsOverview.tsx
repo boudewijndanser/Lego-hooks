@@ -2,7 +2,7 @@ import { tmpData } from '../tmpData'
 import { OverviewCard } from './overviewCard'
 import ImageList from '@mui/material/ImageList'
 import Box from '@mui/material/Box'
-import { countElementsInArray, getYearsFromSets } from './setsOverviewUtils'
+import { getValuesFromSets } from './setsOverviewUtils'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
@@ -12,9 +12,11 @@ import { Set } from '../types'
 
 export const SetsOverview = ():JSX.Element => {
     // let counted: string[] = countElementsInArray(getYearsFromSets(tmpData))
-    let unique: number [] = getYearsFromSets(tmpData).filter((x, i, a) => a.indexOf(x) == i).sort((a,b) => a - b)
-
-    const [selectedYear, setSelectedYear] = React.useState<string | undefined>('');
+    let uniqueYears: number [] = getValuesFromSets<number>(tmpData,'year').filter((x, i, a) => a.indexOf(x) == i).sort((a,b) => a - b)
+    let uniqueThemes: string [] = getValuesFromSets<string>(tmpData,'theme').filter((x, i, a) => a.indexOf(x) == i).sort()
+    
+    const [selectedYear, setSelectedYear] = React.useState<string | undefined>('')
+    const [selectedTheme, setSelectedTheme] = React.useState<string | undefined>('')
 
     let filtered: Set[] = selectedYear === ''
         ? tmpData
@@ -23,6 +25,8 @@ export const SetsOverview = ():JSX.Element => {
   const handleChange = (event: SelectChangeEvent) => {
     setSelectedYear(event.target.value as string)
   };
+
+  getValuesFromSets<string>(tmpData, '')
 
     return (
         <>
@@ -38,7 +42,7 @@ export const SetsOverview = ():JSX.Element => {
         >
             <MenuItem value={''}>{'All'}</MenuItem> 
           {
-            unique.map((item) => {
+            uniqueYears.map((item) => {
                 return(
                     <MenuItem key={item.toString()} value={item.toString()}>{item}</MenuItem> 
                 )

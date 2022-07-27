@@ -1,11 +1,10 @@
 import { Set } from '../types'
 
-
-export const getYearsFromSets = (sets:Set[]):number[] => {
-    let output: number[] = []
+export function getValuesFromSets<Type>(sets:Set[], value:string):Array<Type> {
+    let output: Array<Type> = []
 
     sets.map((set) => {
-        output.push(set.year)
+        output.push(set[value as keyof Set] as Type)
     })
 
     return output
