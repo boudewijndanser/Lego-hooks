@@ -128,7 +128,7 @@ const ResponsiveAppBar = () => {
             ))}
           </Box>
 
-          { user.kind != 'loggedOut' &&
+          { user.kind === 'loggedIn' &&
             <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

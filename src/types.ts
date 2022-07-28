@@ -6,9 +6,11 @@ export type User = {
     apiKey: string
 } | {
     kind: 'loggedOut'
-    username?: string
-    password?: string
-    apiKey?: string
+    } | {
+    kind: 'readyToConnect'
+    username: string
+    password: string
+    apiKey: string
     }
 
 export type Form = {

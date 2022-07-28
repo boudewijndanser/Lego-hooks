@@ -32,7 +32,7 @@ export default function FormDialog() {
   const handleSubmit = () => {
 
     setUser({
-        kind: 'loggedOut',
+        kind: 'readyToConnect',
         username: form.username,
         apiKey: form.apiKey,
         password: form.password
