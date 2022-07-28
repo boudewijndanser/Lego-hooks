@@ -12,12 +12,12 @@ import { SetsOverview } from './components/setsOverview'
 function App() {
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
+      <header >
       <UserProvider>
-        <SetsOverview />
-        <FormDialog />
         <ResponsiveAppBar/>
+        <FormDialog />
+        {/* <SetsOverview /> */}
       </UserProvider>
       </header>
     </div>

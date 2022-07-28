@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useUserContext } from '../context/useUserContext';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Sets', 'Info'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const ResponsiveAppBar = () => {

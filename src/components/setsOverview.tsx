@@ -67,8 +67,8 @@ export const SetsOverview = ():JSX.Element => {
 
     return (
         <>
-        <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
+        <Box sx={{ minWidth: 320 }}>
+      <FormControl sx={{ m: 1, minWidth: 120 }}>
         <InputLabel id="demo-simple-select-label">Year</InputLabel>
         <Select
           labelId="demo-simple-select-label-2"
@@ -90,7 +90,7 @@ export const SetsOverview = ():JSX.Element => {
         </Select>
       </FormControl>
 
-      <FormControl fullWidth>
+      <FormControl sx={{ m: 1, minWidth: 120 }}>
         <InputLabel id="demo-simple-select-label-2">Theme</InputLabel>
         <Select
           labelId="demo-simple-select-label-3"
