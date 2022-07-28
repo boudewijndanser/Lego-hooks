@@ -25,21 +25,22 @@ export const SetsOverview = ():JSX.Element => {
             setFilteredData(filteredData.filter(item => item.year.toString() === selectedYear))
         } 
 
-        if (selectedYear !== ''){
+        if (selectedYear !== '' && selectedTheme === ''){
             console.log('--> Only year')
-            setFilteredData(filteredData.filter(item => item.year.toString() === selectedYear))
+            setFilteredData(tmpData.filter(item => item.year.toString() === selectedYear))
         }
 
     },[selectedYear])
 
     useEffect(() => {
         if (selectedTheme !== '' && selectedYear !== ''){
+            console.log('both selected')
             setFilteredData(filteredData.filter(item => item.theme === selectedTheme))
         }
 
-        if (selectedTheme !== ''){
+        if (selectedTheme !== '' && selectedYear === ''){
             console.log('--> Only theme')
-            setFilteredData(filteredData.filter(item => item.theme === selectedTheme))
+            setFilteredData(tmpData.filter(item => item.theme === selectedTheme))
         }
 
 
