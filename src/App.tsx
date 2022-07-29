@@ -7,9 +7,12 @@ import { UserProvider } from './context/userContext'
 import ResponsiveAppBar from './components/mainNav'
 import FormDialog from './components/loginForm'
 import { SetsOverview } from './components/setsOverview'
+import { Loader } from './components/loader'
 
 
 function App() {
+
+  
 
   return (
     <div>
@@ -17,7 +20,9 @@ function App() {
       <UserProvider>
         <ResponsiveAppBar/>
         <FormDialog />
+        <Loader />
         {/* <SetsOverview /> */}
+
       </UserProvider>
       </header>
     </div>
