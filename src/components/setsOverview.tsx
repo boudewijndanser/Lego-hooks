@@ -2,7 +2,7 @@ import { tmpData } from '../tmpData'
 import { OverviewCard } from './overviewCard'
 import ImageList from '@mui/material/ImageList'
 import Box from '@mui/material/Box'
-import { getValuesFromSets } from './setsOverviewUtils'
+import { countSetsInTheme, countSetsInYear, getValuesFromSets } from './setsOverviewUtils'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
@@ -12,12 +12,12 @@ import { Set } from '../types'
 
 export const SetsOverview = ():JSX.Element => {
 
-    let uniqueYears: number [] = getValuesFromSets<number>(tmpData,'year').filter((x, i, a) => a.indexOf(x) == i).sort((a,b) => a - b)
-    let uniqueThemes: string [] = getValuesFromSets<string>(tmpData,'theme').filter((x, i, a) => a.indexOf(x) == i).sort()
-    
-    const [selectedYear, setSelectedYear] = useState<string | undefined>('')
-    const [selectedTheme, setSelectedTheme] = useState<string | undefined>('')
-    const [filteredData, setFilteredData] = useState<Set[] | []>(tmpData)
+  let uniqueYears: number [] = getValuesFromSets<number>(tmpData,'year').filter((x, i, a) => a.indexOf(x) == i).sort((a,b) => a - b)
+  let uniqueThemes: string [] = getValuesFromSets<string>(tmpData,'theme').filter((x, i, a) => a.indexOf(x) == i).sort()
+  
+  const [selectedYear, setSelectedYear] = useState<string | undefined>('')
+  const [selectedTheme, setSelectedTheme] = useState<string | undefined>('')
+  const [filteredData, setFilteredData] = useState<Set[] | []>(tmpData)
 
     useEffect(() => {
         if (selectedYear !== '' && selectedTheme !== ''){
@@ -51,8 +51,7 @@ export const SetsOverview = ():JSX.Element => {
             console.log('---> Reset!')
             setFilteredData(tmpData)
         }
-
-    },[selectedTheme, selectedYear])
+    })
 
 
   const handleYearChange = (event: SelectChangeEvent) => {
@@ -81,7 +80,7 @@ export const SetsOverview = ():JSX.Element => {
           {
             uniqueYears.map((item) => {
                 return(
-                    <MenuItem key={item.toString()} value={item.toString()}>{item}</MenuItem> 
+                    <MenuItem key={item.toString()} value={item.toString()}>{`${item} (${countSetsInYear(tmpData,item)})`}</MenuItem> 
                 )
             })
           }
@@ -103,7 +102,7 @@ export const SetsOverview = ():JSX.Element => {
           {
             uniqueThemes.map((item) => {
                 return(
-                    <MenuItem key={item.toString()} value={item.toString()}>{item}</MenuItem> 
+                    <MenuItem key={item} value={item}>{`${item} (${countSetsInTheme(tmpData,item)})`}</MenuItem> 
                 )
             })
           }
@@ -112,9 +111,9 @@ export const SetsOverview = ():JSX.Element => {
         </Select>
       </FormControl>
     </Box>
-        <Box sx={{ width: 1200, height: 700, overflowY: 'scroll' }}>
+        <Box sx={{ width: 1900, height: 700, overflowY: 'scroll' }}>
             <p>Total: {filteredData.length}</p>
-      <ImageList variant="masonry" cols={3} gap={8}>
+        <ImageList variant="masonry" cols={6} gap={2}>
             {
                 filteredData.map((item) => {
                     return(

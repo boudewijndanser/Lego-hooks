@@ -20,3 +20,19 @@ export const countElementsInArray = (input: number[]): string[] => {
 
     return output
 }
+
+export const countSetsInYear = (sets:Set[], input: number): number => {
+    let output: number
+
+    output = sets.filter((set) => set.year == input ).length
+
+    return output
+}
+
+export const countSetsInTheme = (sets:Set[], input: string): number => {
+    let output: number
+
+    output = sets.filter((set) => set.theme == input ).length
+
+    return output
+}
