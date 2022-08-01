@@ -52,7 +52,7 @@ export type Set = {
       subtheme?: string // and this
       category?: string
       released: true
-      pieces: number
+      pieces?: number
       minifigs?: number
       image: Image
       bricksetURL: string
@@ -61,8 +61,8 @@ export type Set = {
       LEGOCom: LEGOCom
       rating: number
       reviewCount: number
-      packagingType: 'Box' | 'Shrink-wrapped' | '{Not specified}' | 'Polybag'
-      availability: 'Retail' | 'Retail - limited' | 'LEGO exclusive' | '{Not specified}'
+      packagingType: PackagingType
+      availability: Availability
       instructionsCount: number
       additionalImageCount: number
       ageRange: AgeRange
@@ -121,3 +121,7 @@ export type Barcode = {
     EAN?: string
     UPC?: string
 }
+
+export type PackagingType = 'Box' | 'Shrink-wrapped' | '{Not specified}' | 'Polybag' | 'None (loose parts)' | 'Other'
+
+export type Availability =  'Retail' | 'Retail - limited' | 'LEGO exclusive' | '{Not specified}'
