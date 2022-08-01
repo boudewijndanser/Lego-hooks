@@ -118,7 +118,7 @@ export const SetsOverview = ():JSX.Element => {
             {
                 filteredData.map((item) => {
                     return(
-                    OverviewCard(item.name, item.year, item.image.thumbnailURL))
+                    OverviewCard(item.name, item.year, item.image.thumbnailURL, item.theme))
                 })
             }
         </ImageList>

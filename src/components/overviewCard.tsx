@@ -2,7 +2,7 @@ import * as React from 'react'
 import ImageListItem from '@mui/material/ImageListItem'
 import ImageListItemBar from '@mui/material/ImageListItemBar'
 
-export const OverviewCard = (title: string, year: number, imgURL: string): JSX.Element => {
+export const OverviewCard = (title: string, year: number, imgURL: string, theme: string): JSX.Element => {
 
     return(
         <ImageListItem key={imgURL}>
@@ -12,11 +12,10 @@ export const OverviewCard = (title: string, year: number, imgURL: string): JSX.E
             alt={title}
             loading="lazy"
           />
-          <ImageListItemBar
-            title={title}
-            subtitle={<span>Released: {year}</span>}
-            position="below"
-          />
+            <h4>{title}</h4>
+            <div><h6>Released: {year}</h6>
+          <h6>Theme: {theme}</h6>
+          </div>
         </ImageListItem>
     )
 }
